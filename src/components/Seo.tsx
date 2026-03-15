@@ -1,5 +1,5 @@
 // src/components/Seo.tsx
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 interface SeoProps {
   title?: string;
