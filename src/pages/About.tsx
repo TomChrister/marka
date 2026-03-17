@@ -1,15 +1,15 @@
 export default function About() {
   return (
-    <div className="pt-20 animate-fade-in">
+    <div className="pt-[65px] md:pt-20 animate-fade-in">
       {/* About split */}
-      <div className="grid grid-cols-2 min-h-[600px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:min-h-[600px]">
         <div
-          className="flex items-center justify-center text-[6rem]"
+          className="flex items-center justify-center text-[6rem] min-h-[250px] md:min-h-0"
           style={{ background: 'linear-gradient(170deg, #C2AE96 0%, #7D6550 100%)' }}
         >
           🌲
         </div>
-        <div className="px-20 py-24 flex flex-col justify-center">
+        <div className="px-8 md:px-20 py-14 md:py-24 flex flex-col justify-center">
           <p className="text-[0.68rem] tracking-[0.22em] uppercase text-stone mb-4">Vår historie</p>
           <h1 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-light leading-[1.15] text-bark mb-4">
             Vi tror på det<br />
@@ -51,7 +51,7 @@ export default function About() {
       </div>
 
       {/* Team section */}
-      <section className="py-20 px-20 bg-cream">
+      <section className="py-12 md:py-20 px-6 md:px-20 bg-cream">
         <p className="text-[0.68rem] tracking-[0.22em] uppercase text-stone mb-4 text-center">
           Teamet
         </p>
@@ -59,7 +59,7 @@ export default function About() {
           Menneskene<br />
           <em className="italic text-clay">bak Marka</em>
         </h2>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {[
             { emoji: '👩', name: 'Kari Lund', role: 'Medgründer & Produksjon', bg: 'linear-gradient(135deg,#C8B89A,#7A6348)' },
             { emoji: '👨', name: 'Erik Halvorsen', role: 'Medgründer & Konsept', bg: 'linear-gradient(135deg,#C0D0C8,#6A8A78)' },

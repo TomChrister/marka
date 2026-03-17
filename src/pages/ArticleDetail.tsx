@@ -4,7 +4,7 @@ export default function ArticleDetail() {
   const navigate = useNavigate();
 
   return (
-    <div className="pt-20 animate-fade-in">
+    <div className="pt-[65px] md:pt-20 animate-fade-in">
       <div
         className="h-[55vh] flex items-center justify-center text-[8rem]"
         style={{ background: 'linear-gradient(160deg, #C8B89A, #7A6348)' }}

@@ -52,7 +52,7 @@ export default function WriteArticle() {
   };
 
   return (
-    <div className="pt-[120px] pb-20 px-20 max-w-[900px] mx-auto animate-fade-in">
+    <div className="pt-[80px] md:pt-[120px] pb-20 px-6 md:px-20 max-w-[900px] mx-auto animate-fade-in">
       <h1 className="font-serif text-[2.5rem] font-light text-bark mb-2">Ny artikkel</h1>
       <p className="text-[0.85rem] text-stone mb-12">
         Del kunnskap, oppskrifter eller historier med Marka-fellesskapet.
@@ -79,7 +79,7 @@ export default function WriteArticle() {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         <div>
           <label className="block text-[0.68rem] tracking-[0.15em] uppercase text-stone mb-2">
             Kategori
@@ -135,7 +135,7 @@ export default function WriteArticle() {
         />
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         <button
           onClick={handlePublish}
           className="bg-bark text-cream px-9 py-3.5 text-[0.72rem] tracking-[0.15em] uppercase border-none cursor-pointer font-sans font-normal hover:bg-clay transition-colors"

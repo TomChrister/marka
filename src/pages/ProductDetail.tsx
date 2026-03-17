@@ -24,12 +24,12 @@ export default function ProductDetail() {
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
 
   return (
-    <div className="pt-[100px] animate-fade-in">
-      <div className="grid grid-cols-2 min-h-[calc(100vh-100px)]">
-        <div className="bg-light-stone flex items-center justify-center text-[8rem] sticky top-20 h-[calc(100vh-80px)]">
+    <div className="pt-[65px] md:pt-[100px] animate-fade-in">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:min-h-[calc(100vh-100px)]">
+        <div className="bg-light-stone flex items-center justify-center text-[8rem] h-[300px] md:h-auto md:sticky md:top-20 md:h-[calc(100vh-80px)]">
           🍯
         </div>
-        <div className="px-16 py-20">
+        <div className="px-6 md:px-16 py-12 md:py-20">
           <p
             className="text-[0.7rem] text-stone tracking-widest mb-8 cursor-pointer hover:text-clay transition-colors"
             onClick={() => navigate('/butikk')}

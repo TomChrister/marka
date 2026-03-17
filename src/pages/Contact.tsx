@@ -3,9 +3,9 @@ export default function Contact() {
     'w-full px-4 py-3 border border-light-stone bg-warm-white font-sans text-[0.85rem] text-charcoal outline-none focus:border-bark transition-colors';
 
   return (
-    <div className="pt-20 animate-fade-in">
-      <div className="grid grid-cols-2">
-        <div className="bg-bark text-cream px-20 py-24">
+    <div className="pt-[65px] md:pt-20 animate-fade-in">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="bg-bark text-cream px-8 md:px-20 py-14 md:py-24">
           <p className="text-[0.68rem] tracking-[0.22em] uppercase text-clay mb-4">Si hei</p>
           <h1 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-light leading-[1.15] text-cream mb-4">
             La oss snakke<br />
@@ -31,11 +31,11 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="px-20 py-24 bg-warm-white">
+        <div className="px-8 md:px-20 py-14 md:py-24 bg-warm-white">
           <h3 className="font-serif text-[1.8rem] font-light text-bark mb-8">
             Send oss en melding
           </h3>
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div>
               <label className="block text-[0.7rem] tracking-[0.12em] uppercase text-stone mb-2">
                 Fornavn

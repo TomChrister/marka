@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 export function Footer() {
   return (
-    <footer className="bg-bark text-cream px-20 pt-20 pb-12">
-      <div className="grid grid-cols-[2fr_1fr_1fr_1fr] gap-16 mb-16">
+    <footer className="bg-bark text-cream px-6 md:px-20 pt-12 md:pt-20 pb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-10 md:gap-16 mb-12 md:mb-16">
         <div>
           <span className="font-serif text-[1.6rem] tracking-[0.15em] uppercase text-cream block mb-4">
             MARKA
@@ -38,7 +38,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-cream/10 pt-8 flex justify-between items-center">
+      <div className="border-t border-cream/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-2">
         <p className="text-[0.72rem] text-cream/40 tracking-wide">© 2025 MARKA AS. Alle rettigheter forbeholdt.</p>
         <p className="text-[0.72rem] text-cream/40">Laget med kjærlighet i Norge 🌿</p>
       </div>

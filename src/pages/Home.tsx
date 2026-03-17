@@ -26,8 +26,8 @@ export default function Home() {
   return (
     <div className="animate-fade-in">
       {/* Hero */}
-      <section className="h-screen grid grid-cols-2 pt-20">
-        <div className="flex flex-col justify-center px-20 py-24">
+      <section className="min-h-screen grid grid-cols-1 md:grid-cols-2 pt-16 md:pt-20">
+        <div className="flex flex-col justify-center px-6 md:px-20 py-16 md:py-24">
           <p className="text-[0.7rem] tracking-[0.2em] uppercase text-stone mb-6">
             Ny kolleksjon · Vår 2025
           </p>
@@ -38,7 +38,7 @@ export default function Home() {
           <p className="text-[0.95rem] text-stone max-w-[380px] mb-12 leading-[1.8]">
             Produkter hentet fra norsk natur — ærlige råvarer, bevisste valg og en livsstil du kan ta stolthet i.
           </p>
-          <div className="flex gap-4 items-center">
+          <div className="flex flex-wrap gap-4 items-center">
             <button
               onClick={() => navigate('/butikk')}
               className="bg-bark text-cream px-9 py-3.5 text-[0.72rem] tracking-[0.15em] uppercase border-none cursor-pointer font-sans font-normal hover:bg-clay hover:-translate-y-px transition-all duration-200"
@@ -54,7 +54,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-light-stone flex items-center justify-center overflow-hidden relative">
+        <div className="bg-light-stone flex items-center justify-center overflow-hidden relative min-h-[300px] md:min-h-0">
           <div
             className="w-full h-full flex flex-col items-center justify-center gap-4"
             style={{ background: 'linear-gradient(135deg, #D4C5B2 0%, #B8A898 40%, #8B7355 100%)' }}
@@ -78,7 +78,7 @@ export default function Home() {
       </section>
 
       {/* Stats bar */}
-      <div className="grid grid-cols-4 border-y border-light-stone">
+      <div className="grid grid-cols-2 md:grid-cols-4 border-y border-light-stone">
         {[
           { num: '12k+', label: 'Fornøyde kunder' },
           { num: '100%', label: 'Norske råvarer' },
@@ -87,7 +87,7 @@ export default function Home() {
         ].map((stat, i) => (
           <div
             key={i}
-            className={`py-10 flex flex-col items-center justify-center text-center ${i < 3 ? 'border-r border-light-stone' : ''}`}
+            className={`py-8 md:py-10 flex flex-col items-center justify-center text-center border-light-stone ${i < 3 ? 'md:border-r' : ''} ${i % 2 === 0 ? 'border-r' : ''} ${i < 2 ? 'border-b md:border-b-0' : ''}`}
           >
             <span className="font-serif text-4xl font-light text-bark italic">{stat.num}</span>
             <span className="text-[0.68rem] tracking-[0.15em] uppercase text-stone mt-1">{stat.label}</span>
@@ -96,12 +96,12 @@ export default function Home() {
       </div>
 
       {/* Categories */}
-      <section className="py-20 px-20">
+      <section className="py-12 md:py-20 px-6 md:px-20">
         <p className="text-[0.68rem] tracking-[0.22em] uppercase text-stone mb-4">Sortiment</p>
         <h2 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-light leading-[1.15] text-bark">
           Hva leter<br />du etter?
         </h2>
-        <div className="grid grid-cols-4 gap-px bg-light-stone mt-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-light-stone mt-8">
           {[
             { icon: '🍯', name: 'Honning & Syltetøy', count: '24 produkter' },
             { icon: '🌿', name: 'Urter & Krydder', count: '18 produkter' },
@@ -111,7 +111,7 @@ export default function Home() {
             <div
               key={cat.name}
               onClick={() => navigate('/butikk')}
-              className="bg-warm-white px-8 py-10 cursor-pointer hover:bg-cream transition-colors flex flex-col gap-3"
+              className="bg-warm-white px-5 md:px-8 py-8 md:py-10 cursor-pointer hover:bg-cream transition-colors flex flex-col gap-3"
             >
               <span className="text-3xl">{cat.icon}</span>
               <span className="font-serif text-xl font-normal">{cat.name}</span>
@@ -123,14 +123,14 @@ export default function Home() {
       </section>
 
       {/* Featured banner */}
-      <div className="grid grid-cols-2 min-h-[500px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[400px] md:min-h-[500px]">
         <div
-          className="flex items-center justify-center text-8xl"
+          className="flex items-center justify-center text-8xl min-h-[250px] md:min-h-0"
           style={{ background: 'linear-gradient(160deg, #C8B89A, #7A6348)' }}
         >
           🍄
         </div>
-        <div className="bg-bark text-cream flex flex-col justify-center px-20 py-20">
+        <div className="bg-bark text-cream flex flex-col justify-center px-8 md:px-20 py-14 md:py-20">
           <p className="text-[0.68rem] tracking-[0.22em] uppercase text-clay mb-4">Ukens utvalgte</p>
           <h2 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-light leading-[1.15] text-cream mb-4">
             Villmarks-<br />
@@ -153,8 +153,8 @@ export default function Home() {
       </div>
 
       {/* New arrivals */}
-      <section className="py-20 px-20">
-        <div className="flex justify-between items-end mb-10">
+      <section className="py-12 md:py-20 px-6 md:px-20">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-10">
           <div>
             <p className="text-[0.68rem] tracking-[0.22em] uppercase text-stone mb-4">Nyheter</p>
             <h2 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-light leading-[1.15] text-bark">
@@ -168,7 +168,7 @@ export default function Home() {
             Se alle →
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {newArrivals.map((p) => (
             <div
               key={p.name}
@@ -202,8 +202,8 @@ export default function Home() {
       </section>
 
       {/* Journal preview */}
-      <section className="py-20 px-20 bg-cream">
-        <div className="flex justify-between items-end mb-10">
+      <section className="py-12 md:py-20 px-6 md:px-20 bg-cream">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-10">
           <div>
             <p className="text-[0.68rem] tracking-[0.22em] uppercase text-stone mb-4">Magasinet</p>
             <h2 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-light leading-[1.15] text-bark">
@@ -217,7 +217,7 @@ export default function Home() {
             Alle artikler →
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {journalPreviews.map((a) => (
             <div
               key={a.title}
@@ -242,7 +242,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-20">
+      <section className="py-12 md:py-20 px-6 md:px-20">
         <p className="text-[0.68rem] tracking-[0.22em] uppercase text-stone mb-4 text-center">
           Kunder sier
         </p>
@@ -250,7 +250,7 @@ export default function Home() {
           Ord vi<br />
           <em className="italic text-clay">setter pris på</em>
         </h2>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t) => (
             <div key={t.author} className="p-10 border border-light-stone flex flex-col gap-4">
               <p className="text-clay text-[0.8rem] tracking-[0.2em]">★★★★★</p>
@@ -262,7 +262,7 @@ export default function Home() {
       </section>
 
       {/* Newsletter */}
-      <div className="text-center py-24 px-20 bg-cream">
+      <div className="text-center py-16 md:py-24 px-6 md:px-20 bg-cream">
         <p className="text-[0.68rem] tracking-[0.22em] uppercase text-stone mb-4">Hold kontakt</p>
         <h2 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-light leading-[1.15] text-bark mb-4">
           Bli en del av<br />
@@ -271,11 +271,11 @@ export default function Home() {
         <p className="text-[0.92rem] text-stone max-w-[520px] leading-[1.8] mb-10 mx-auto">
           Oppskrifter, nyheter og eksklusivt innhold — rett i innboksen din.
         </p>
-        <div className="flex max-w-[440px] mx-auto">
+        <div className="flex flex-col sm:flex-row max-w-[440px] mx-auto">
           <input
             type="email"
             placeholder="Din e-postadresse"
-            className="flex-1 px-5 py-3.5 border border-bark border-r-0 font-sans text-[0.82rem] bg-warm-white text-charcoal outline-none placeholder:text-stone"
+            className="flex-1 px-5 py-3.5 border border-bark sm:border-r-0 font-sans text-[0.82rem] bg-warm-white text-charcoal outline-none placeholder:text-stone"
           />
           <button className="bg-bark text-cream px-9 py-3.5 text-[0.72rem] tracking-[0.15em] uppercase border-none cursor-pointer font-sans font-normal hover:bg-clay transition-colors">
             Meld meg på

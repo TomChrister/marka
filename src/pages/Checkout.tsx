@@ -15,9 +15,9 @@ export default function Checkout() {
     'text-[0.72rem] tracking-[0.15em] uppercase text-stone mt-8 mb-6 block';
 
   return (
-    <div className="pt-20 animate-fade-in">
-      <div className="grid grid-cols-[1fr_400px] gap-16 px-20 py-16 min-h-[calc(100vh-80px)]">
-        <div>
+    <div className="pt-[65px] md:pt-20 animate-fade-in">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-10 lg:gap-16 px-6 md:px-20 py-10 md:py-16 min-h-[calc(100vh-80px)]">
+        <div className="order-2 lg:order-1">
           <h2 className="font-serif text-[2rem] font-light text-bark mb-8">
             Fullfør bestilling
           </h2>
@@ -29,7 +29,7 @@ export default function Checkout() {
           </div>
 
           <span className={sectionLabel}>Leveringsadresse</span>
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div>
               <label className={labelClass}>Fornavn</label>
               <input type="text" placeholder="Kari" className={inputClass} />
@@ -43,7 +43,7 @@ export default function Checkout() {
             <label className={labelClass}>Adresse</label>
             <input type="text" placeholder="Gøteborggata 12" className={inputClass} />
           </div>
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div>
               <label className={labelClass}>Postnummer</label>
               <input type="text" placeholder="0566" className={inputClass} />
@@ -63,7 +63,7 @@ export default function Checkout() {
             <label className={labelClass}>Kortnummer</label>
             <input type="text" placeholder="1234 5678 9012 3456" className={inputClass} />
           </div>
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div>
               <label className={labelClass}>Utløpsdato</label>
               <input type="text" placeholder="MM/ÅÅ" className={inputClass} />
@@ -83,8 +83,8 @@ export default function Checkout() {
           </button>
         </div>
 
-        <div>
-          <div className="bg-cream p-10 sticky top-[100px]">
+        <div className="order-1 lg:order-2">
+          <div className="bg-cream p-6 sm:p-10 lg:sticky lg:top-[100px]">
             <h3 className="font-serif text-[1.3rem] font-normal mb-6">Din bestilling</h3>
             {cartItems.length === 0 ? (
               <div className="flex justify-between text-[0.82rem] py-2 border-b border-light-stone">

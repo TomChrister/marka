@@ -15,8 +15,8 @@ export default function Categories() {
   const navigate = useNavigate();
 
   return (
-    <div className="pt-[120px] animate-fade-in">
-      <div className="py-20 px-20">
+    <div className="pt-[80px] md:pt-[120px] animate-fade-in">
+      <div className="py-12 md:py-20 px-6 md:px-20">
         <p className="text-[0.68rem] tracking-[0.22em] uppercase text-stone mb-4">Oversikt</p>
         <h1 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-light leading-[1.15] text-bark mb-4">
           Kategorier
@@ -25,7 +25,7 @@ export default function Categories() {
           Utforsk hele vårt sortiment, organisert etter type.
         </p>
       </div>
-      <div className="grid grid-cols-4 gap-px bg-light-stone">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-light-stone">
         {categories.map((cat) => (
           <div
             key={cat.name}

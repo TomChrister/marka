@@ -20,11 +20,11 @@ export function CartDrawer() {
       />
 
       <div
-        className={`fixed right-0 top-0 bottom-0 w-[400px] bg-warm-white z-50 flex flex-col shadow-2xl transition-transform duration-300 ${
+        className={`fixed right-0 top-0 bottom-0 w-full sm:w-[400px] bg-warm-white z-50 flex flex-col shadow-2xl transition-transform duration-300 ${
           isCartOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="p-8 border-b border-light-stone flex justify-between items-center">
+        <div className="p-5 sm:p-8 border-b border-light-stone flex justify-between items-center">
           <h3 className="font-serif text-[1.4rem] font-normal">Handlevogn</h3>
           <button
             onClick={toggleCart}
@@ -34,7 +34,7 @@ export function CartDrawer() {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-8 flex flex-col gap-6">
+        <div className="flex-1 overflow-y-auto p-5 sm:p-8 flex flex-col gap-6">
           {cartItems.length === 0 ? (
             <p className="text-center py-12 text-stone font-serif text-xl italic">
               Din vogn er tom
@@ -62,7 +62,7 @@ export function CartDrawer() {
         </div>
 
         {cartItems.length > 0 && (
-          <div className="p-8 border-t border-light-stone">
+          <div className="p-5 sm:p-8 border-t border-light-stone">
             <div className="flex justify-between mb-6">
               <span className="font-serif text-lg">Totalt</span>
               <span className="font-serif text-lg">kr {total}</span>
