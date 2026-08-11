@@ -34,11 +34,9 @@ interface AppStore {
   removeFromCart: (idx: number) => void;
   toggleWishlist: (name: string, price: string, icon: string) => void;
   removeFromWishlist: (name: string) => void;
-  isInWishlist: (name: string) => boolean;
   toggleCart: () => void;
   closeCart: () => void;
   toggleWishlistDrawer: () => void;
-  closeWishlistDrawer: () => void;
   toggleSearch: () => void;
   addArticle: (article: Omit<Article, 'id'>) => void;
 }
@@ -73,7 +71,7 @@ const defaultArticles: Article[] = [
   },
 ];
 
-export const useAppStore = create<AppStore>((set, get) => ({
+export const useAppStore = create<AppStore>((set) => ({
   cartItems: [],
   wishlistItems: [],
   isCartOpen: false,
@@ -121,13 +119,10 @@ export const useAppStore = create<AppStore>((set, get) => ({
       wishlistItems: state.wishlistItems.filter((i) => i.name !== name),
     })),
 
-  isInWishlist: (name) => get().wishlistItems.some((i) => i.name === name),
-
   toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
   closeCart: () => set({ isCartOpen: false }),
   toggleWishlistDrawer: () =>
     set((state) => ({ isWishlistOpen: !state.isWishlistOpen })),
-  closeWishlistDrawer: () => set({ isWishlistOpen: false }),
   toggleSearch: () => set((state) => ({ isSearchOpen: !state.isSearchOpen })),
 
   addArticle: (article) =>
