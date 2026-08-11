@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Heart } from 'lucide-react';
 import { useAppStore } from '../store/cartStore';
 
 const accordionItems = [
@@ -17,11 +18,14 @@ const accordionItems = [
   },
 ];
 
+const PRODUCT = { name: 'Lynghonning Premium', price: 'kr 189', icon: '🍯' };
+
 export default function ProductDetail() {
   const navigate = useNavigate();
-  const { addToCart } = useAppStore();
+  const { addToCart, toggleWishlist, wishlistItems } = useAppStore();
   const [qty, setQty] = useState(1);
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+  const wishlisted = wishlistItems.some((i) => i.name === PRODUCT.name);
 
   return (
     <div className="pt-[65px] md:pt-[100px] animate-fade-in">
@@ -61,12 +65,20 @@ export default function ProductDetail() {
           </div>
           <button
             className="w-full py-4 bg-bark text-cream border-none font-sans text-[0.75rem] tracking-[0.15em] uppercase cursor-pointer hover:bg-clay transition-colors mb-4"
-            onClick={() => addToCart('Lynghonning Premium', 'kr 189', '🍯')}
+            onClick={() => addToCart(PRODUCT.name, PRODUCT.price, PRODUCT.icon, qty)}
           >
             Legg i handlevogn
           </button>
-          <button className="w-full py-4 bg-transparent text-bark border border-bark font-sans text-[0.75rem] tracking-[0.15em] uppercase cursor-pointer hover:bg-bark hover:text-cream transition-all">
-            Legg til ønskeliste
+          <button
+            onClick={() => toggleWishlist(PRODUCT.name, PRODUCT.price, PRODUCT.icon)}
+            className={`w-full py-4 border font-sans text-[0.75rem] tracking-[0.15em] uppercase cursor-pointer transition-all flex items-center justify-center gap-2 ${
+              wishlisted
+                ? 'bg-bark text-cream border-bark'
+                : 'bg-transparent text-bark border-bark hover:bg-bark hover:text-cream'
+            }`}
+          >
+            <Heart size={15} strokeWidth={1.5} fill={wishlisted ? 'currentColor' : 'none'} />
+            {wishlisted ? 'Lagt til i ønskeliste' : 'Legg til ønskeliste'}
           </button>
           <div className="mt-12 border-t border-light-stone">
             {accordionItems.map((item, i) => (

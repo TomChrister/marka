@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { CartDrawer } from '../components/CartDrawer';
+import { WishlistDrawer } from '../components/WishlistDrawer';
 import { SearchBar } from '../components/SearchBar';
 import { ScrollTop } from '../components/ScrollTop';
 
@@ -15,6 +16,7 @@ export const Layout = () => {
       </main>
       <Footer />
       <CartDrawer />
+      <WishlistDrawer />
       <ScrollTop />
     </div>
   );

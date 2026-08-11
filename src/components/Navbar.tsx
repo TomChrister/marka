@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Search, ShoppingBag, Menu, X } from 'lucide-react';
+import { Search, ShoppingBag, Heart, Menu, X } from 'lucide-react';
 import { useAppStore } from '../store/cartStore';
 
 const navLinks = [
@@ -12,8 +12,10 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const { cartItems, toggleCart, toggleSearch } = useAppStore();
+  const { cartItems, wishlistItems, toggleCart, toggleWishlistDrawer, toggleSearch } =
+    useAppStore();
   const cartCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
+  const wishlistCount = wishlistItems.length;
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -49,6 +51,18 @@ const Navbar = () => {
             aria-label="Søk"
           >
             <Search size={18} strokeWidth={1.5} />
+          </button>
+          <button
+            onClick={toggleWishlistDrawer}
+            className="relative text-bark hover:text-clay transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
+            aria-label="Ønskeliste"
+          >
+            <Heart size={18} strokeWidth={1.5} />
+            {wishlistCount > 0 && (
+              <span className="absolute -top-1.5 -right-2 bg-clay text-white text-[0.6rem] w-4 h-4 rounded-full flex items-center justify-center font-sans font-medium">
+                {wishlistCount}
+              </span>
+            )}
           </button>
           <button
             onClick={toggleCart}

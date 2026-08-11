@@ -7,6 +7,12 @@ export interface CartItem {
   qty: number;
 }
 
+export interface WishlistItem {
+  name: string;
+  price: string;
+  icon: string;
+}
+
 export interface Article {
   id: string;
   title: string;
@@ -19,13 +25,20 @@ export interface Article {
 
 interface AppStore {
   cartItems: CartItem[];
+  wishlistItems: WishlistItem[];
   isCartOpen: boolean;
+  isWishlistOpen: boolean;
   isSearchOpen: boolean;
   articles: Article[];
-  addToCart: (name: string, price: string, icon: string) => void;
+  addToCart: (name: string, price: string, icon: string, qty?: number) => void;
   removeFromCart: (idx: number) => void;
+  toggleWishlist: (name: string, price: string, icon: string) => void;
+  removeFromWishlist: (name: string) => void;
+  isInWishlist: (name: string) => boolean;
   toggleCart: () => void;
   closeCart: () => void;
+  toggleWishlistDrawer: () => void;
+  closeWishlistDrawer: () => void;
   toggleSearch: () => void;
   addArticle: (article: Omit<Article, 'id'>) => void;
 }
@@ -60,25 +73,27 @@ const defaultArticles: Article[] = [
   },
 ];
 
-export const useAppStore = create<AppStore>((set) => ({
+export const useAppStore = create<AppStore>((set, get) => ({
   cartItems: [],
+  wishlistItems: [],
   isCartOpen: false,
+  isWishlistOpen: false,
   isSearchOpen: false,
   articles: defaultArticles,
 
-  addToCart: (name, price, icon) =>
+  addToCart: (name, price, icon, qty = 1) =>
     set((state) => {
       const existing = state.cartItems.find((i) => i.name === name);
       if (existing) {
         return {
           cartItems: state.cartItems.map((i) =>
-            i.name === name ? { ...i, qty: i.qty + 1 } : i
+            i.name === name ? { ...i, qty: i.qty + qty } : i
           ),
           isCartOpen: true,
         };
       }
       return {
-        cartItems: [...state.cartItems, { name, price, icon, qty: 1 }],
+        cartItems: [...state.cartItems, { name, price, icon, qty }],
         isCartOpen: true,
       };
     }),
@@ -88,8 +103,31 @@ export const useAppStore = create<AppStore>((set) => ({
       cartItems: state.cartItems.filter((_, i) => i !== idx),
     })),
 
+  toggleWishlist: (name, price, icon) =>
+    set((state) => {
+      const exists = state.wishlistItems.some((i) => i.name === name);
+      if (exists) {
+        return {
+          wishlistItems: state.wishlistItems.filter((i) => i.name !== name),
+        };
+      }
+      return {
+        wishlistItems: [...state.wishlistItems, { name, price, icon }],
+      };
+    }),
+
+  removeFromWishlist: (name) =>
+    set((state) => ({
+      wishlistItems: state.wishlistItems.filter((i) => i.name !== name),
+    })),
+
+  isInWishlist: (name) => get().wishlistItems.some((i) => i.name === name),
+
   toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
   closeCart: () => set({ isCartOpen: false }),
+  toggleWishlistDrawer: () =>
+    set((state) => ({ isWishlistOpen: !state.isWishlistOpen })),
+  closeWishlistDrawer: () => set({ isWishlistOpen: false }),
   toggleSearch: () => set((state) => ({ isSearchOpen: !state.isSearchOpen })),
 
   addArticle: (article) =>
