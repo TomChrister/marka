@@ -1,14 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import { useAppStore } from '../store/cartStore';
+import { Link } from 'react-router-dom';
+import { useAppStore, cartTotal } from '../store/cartStore';
 
 export function CartDrawer() {
-  const { cartItems, isCartOpen, toggleCart, closeCart, removeFromCart } = useAppStore();
-  const navigate = useNavigate();
-
-  const total = cartItems.reduce((sum, item) => {
-    const price = parseInt(item.price.replace(/[^0-9]/g, ''));
-    return sum + price * item.qty;
-  }, 0);
+  const { cartItems, isCartOpen, toggleCart, removeFromCart } = useAppStore();
 
   return (
     <>
@@ -20,6 +14,9 @@ export function CartDrawer() {
       />
 
       <div
+        role="dialog"
+        aria-label="Handlevogn"
+        inert={!isCartOpen}
         className={`fixed right-0 top-0 bottom-0 w-full sm:w-[400px] bg-warm-white z-50 flex flex-col shadow-2xl transition-transform duration-300 ${
           isCartOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
@@ -28,6 +25,7 @@ export function CartDrawer() {
           <h3 className="font-serif text-[1.4rem] font-normal">Handlevogn</h3>
           <button
             onClick={toggleCart}
+            aria-label="Lukk handlevogn"
             className="text-stone text-2xl bg-transparent border-none cursor-pointer hover:text-bark transition-colors"
           >
             ✕
@@ -42,16 +40,16 @@ export function CartDrawer() {
           ) : (
             cartItems.map((item, idx) => (
               <div key={idx} className="flex gap-4">
-                <div className="w-[70px] h-[90px] bg-light-stone flex items-center justify-center text-2xl flex-shrink-0">
+                <div className="w-[70px] h-[90px] bg-light-stone flex items-center justify-center text-2xl flex-shrink-0" aria-hidden="true">
                   {item.icon}
                 </div>
                 <div className="flex-1">
-                  <p className="font-serif text-base mb-0.5">{item.name}</p>
-                  <p className="text-[0.72rem] text-stone mb-2">Antall: {item.qty}</p>
-                  <p className="text-[0.85rem] font-normal">{item.price}</p>
+                  <p className="font-serif text-lg mb-0.5">{item.name}</p>
+                  <p className="text-[0.8rem] text-stone mb-2">Antall: {item.qty}</p>
+                  <p className="text-base font-normal">{item.price}</p>
                   <button
                     onClick={() => removeFromCart(idx)}
-                    className="text-[0.65rem] text-stone cursor-pointer uppercase tracking-widest bg-transparent border-none hover:text-bark transition-colors mt-1"
+                    className="text-[0.8rem] text-stone cursor-pointer uppercase tracking-widest bg-transparent border-none hover:text-bark transition-colors mt-1"
                   >
                     Fjern
                   </button>
@@ -65,17 +63,15 @@ export function CartDrawer() {
           <div className="p-5 sm:p-8 border-t border-light-stone">
             <div className="flex justify-between mb-6">
               <span className="font-serif text-lg">Totalt</span>
-              <span className="font-serif text-lg">kr {total}</span>
+              <span className="font-serif text-lg">kr {cartTotal(cartItems)}</span>
             </div>
-            <button
-              className="w-full py-4 bg-bark text-cream text-[0.75rem] tracking-[0.15em] uppercase font-sans font-normal hover:bg-clay transition-colors cursor-pointer border-none"
-              onClick={() => {
-                closeCart();
-                navigate('/kasse');
-              }}
+            <Link
+              to="/kasse"
+              onClick={toggleCart}
+              className="block text-center w-full py-4 bg-bark text-cream text-sm tracking-[0.15em] uppercase font-sans font-normal hover:bg-clay transition-colors"
             >
               Gå til kasse
-            </button>
+            </Link>
           </div>
         )}
       </div>

@@ -10,12 +10,12 @@ export default function About() {
           🌲
         </div>
         <div className="px-8 md:px-20 py-14 md:py-24 flex flex-col justify-center">
-          <p className="text-[0.68rem] tracking-[0.22em] uppercase text-stone mb-4">Vår historie</p>
-          <h1 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-light leading-[1.15] text-bark mb-4">
+          <p className="text-[0.8rem] tracking-[0.22em] uppercase text-stone mb-4">Vår historie</p>
+          <h1 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-normal leading-[1.15] text-bark mb-4">
             Vi tror på det<br />
             <em className="italic text-clay">ekte og enkle</em>
           </h1>
-          <p className="text-[0.92rem] text-stone max-w-[520px] leading-[1.8] mb-8">
+          <p className="text-lg text-stone max-w-[520px] leading-[1.8] mb-8">
             MARKA ble grunnlagt i 2019 av to venner som var lei av forpakkede produkter uten sjel. Vi ville tilbake til røttene — til det norske, til naturen og til de menneskene som kjenner den best.
           </p>
           <div className="flex flex-col gap-6">
@@ -41,8 +41,8 @@ export default function About() {
                   {v.num}
                 </span>
                 <div>
-                  <h4 className="text-[0.85rem] tracking-widest uppercase mb-1">{v.title}</h4>
-                  <p className="text-[0.82rem] text-stone leading-[1.7]">{v.text}</p>
+                  <h4 className="text-base tracking-widest uppercase mb-1">{v.title}</h4>
+                  <p className="text-base text-stone leading-[1.7]">{v.text}</p>
                 </div>
               </div>
             ))}
@@ -52,10 +52,10 @@ export default function About() {
 
       {/* Team section */}
       <section className="py-12 md:py-20 px-6 md:px-20 bg-cream">
-        <p className="text-[0.68rem] tracking-[0.22em] uppercase text-stone mb-4 text-center">
+        <p className="text-[0.8rem] tracking-[0.22em] uppercase text-stone mb-4 text-center">
           Teamet
         </p>
-        <h2 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-light leading-[1.15] text-bark mb-12 text-center">
+        <h2 className="font-serif text-[clamp(2rem,3.5vw,3.2rem)] font-normal leading-[1.15] text-bark mb-12 text-center">
           Menneskene<br />
           <em className="italic text-clay">bak Marka</em>
         </h2>
@@ -73,7 +73,7 @@ export default function About() {
                 {member.emoji}
               </div>
               <h4 className="font-serif text-xl font-normal mb-1">{member.name}</h4>
-              <p className="text-[0.72rem] text-stone tracking-widest uppercase">{member.role}</p>
+              <p className="text-[0.8rem] text-stone tracking-widest uppercase">{member.role}</p>
             </div>
           ))}
         </div>

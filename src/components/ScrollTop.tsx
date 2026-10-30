@@ -13,6 +13,7 @@ export function ScrollTop() {
 
   return (
     <button
+      aria-label="Til toppen"
       className="fixed bottom-8 right-8 z-30 w-11 h-11 bg-bark text-cream border-none cursor-pointer text-lg flex items-center justify-center hover:bg-clay transition-colors"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >

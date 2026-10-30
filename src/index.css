@@ -5,8 +5,9 @@
   --color-warm-white: #FDFAF7;
   --color-bark: #3B2F24;
   --color-moss: #4A5C3E;
-  --color-clay: #B87A5A;
-  --color-stone: #9E9589;
+  --color-clay: #965636;
+  --color-clay-light: #D49A7A; /* clay text on bark backgrounds */
+  --color-stone: #685F54;
   --color-light-stone: #E8E3DC;
   --color-charcoal: #2A1F17;
 
@@ -22,7 +23,7 @@ body {
   background-color: #FDFAF7;
   color: #2A1F17;
   font-family: 'Jost', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -40,4 +41,14 @@ body {
 
 .animate-fade-in {
   animation: fadeIn 0.4s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-in {
+    animation: none;
+  }
 }

@@ -13,6 +13,7 @@ import WriteArticle from './pages/WriteArticle';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Checkout from './pages/Checkout';
+import OrderConfirmation from './pages/OrderConfirmation';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: 'om-oss', element: <About /> },
       { path: 'kontakt', element: <Contact /> },
       { path: 'kasse', element: <Checkout /> },
+      { path: 'takk', element: <OrderConfirmation /> },
       { path: '*', element: <div className="p-10 pt-32">404 – siden finnes ikke</div> },
     ],
   },
