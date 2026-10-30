@@ -7,11 +7,11 @@ export interface CartItem {
   qty: number;
 }
 
-export interface WishlistItem {
-  name: string;
-  price: string;
-  icon: string;
-}
+type WishlistItem = Omit<CartItem, 'qty'>;
+
+// Prices are display strings like "kr 189"; whole kroner only.
+export const cartTotal = (items: CartItem[]) =>
+  items.reduce((sum, i) => sum + parseInt(i.price.replace(/\D/g, '')) * i.qty, 0);
 
 export interface Article {
   id: string;
@@ -32,10 +32,9 @@ interface AppStore {
   articles: Article[];
   addToCart: (name: string, price: string, icon: string, qty?: number) => void;
   removeFromCart: (idx: number) => void;
+  clearCart: () => void;
   toggleWishlist: (name: string, price: string, icon: string) => void;
-  removeFromWishlist: (name: string) => void;
   toggleCart: () => void;
-  closeCart: () => void;
   toggleWishlistDrawer: () => void;
   toggleSearch: () => void;
   addArticle: (article: Omit<Article, 'id'>) => void;
@@ -101,6 +100,8 @@ export const useAppStore = create<AppStore>((set) => ({
       cartItems: state.cartItems.filter((_, i) => i !== idx),
     })),
 
+  clearCart: () => set({ cartItems: [] }),
+
   toggleWishlist: (name, price, icon) =>
     set((state) => {
       const exists = state.wishlistItems.some((i) => i.name === name);
@@ -114,13 +115,7 @@ export const useAppStore = create<AppStore>((set) => ({
       };
     }),
 
-  removeFromWishlist: (name) =>
-    set((state) => ({
-      wishlistItems: state.wishlistItems.filter((i) => i.name !== name),
-    })),
-
   toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
-  closeCart: () => set({ isCartOpen: false }),
   toggleWishlistDrawer: () =>
     set((state) => ({ isWishlistOpen: !state.isWishlistOpen })),
   toggleSearch: () => set((state) => ({ isSearchOpen: !state.isSearchOpen })),

@@ -48,12 +48,17 @@ npm run lint
 marka/
 ├── src/
 │   ├── components/
+│   │   ├── ArticleCard.tsx       # Article tile (Home, Magasin)
 │   │   ├── CartDrawer.tsx        # Slide-out shopping cart
+│   │   ├── CategoryGrid.tsx      # Category tiles (Home, Kategorier)
 │   │   ├── Footer.tsx            # Site footer
 │   │   ├── Navbar.tsx            # Top banner: nav, search, wishlist & cart icons
-│   │   ├── ScrollTop.tsx         # Scrolls to top on route change
+│   │   ├── ProductCard.tsx       # Product tile (Home, Butikk)
+│   │   ├── ScrollTop.tsx         # Back-to-top button
 │   │   ├── SearchBar.tsx         # Search overlay
 │   │   └── WishlistDrawer.tsx    # Slide-out wishlist
+│   ├── data/
+│   │   └── products.ts           # Product and category lists
 │   ├── layout/
 │   │   └── index.tsx             # App shell (navbar, drawers, outlet, footer)
 │   ├── pages/
@@ -64,6 +69,7 @@ marka/
 │   │   ├── Contact.tsx           # Kontakt
 │   │   ├── Home.tsx              # Landing page
 │   │   ├── Journal.tsx           # Magasin (article list)
+│   │   ├── OrderConfirmation.tsx # Takk for din bestilling
 │   │   ├── ProductDetail.tsx     # Product page (qty + add to cart/wishlist)
 │   │   ├── Shop.tsx              # Butikk (product listing)
 │   │   └── WriteArticle.tsx      # Create a new article
@@ -97,6 +103,7 @@ marka/
 | `/om-oss`         | About           |
 | `/kontakt`        | Contact         |
 | `/kasse`          | Checkout        |
+| `/takk`           | Order confirmation |
 
 ## 🚢 Deployment
 

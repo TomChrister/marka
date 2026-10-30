@@ -34,7 +34,7 @@ const Navbar = () => {
               key={to}
               to={to}
               className={({ isActive }) =>
-                `text-[0.75rem] tracking-[0.12em] uppercase font-normal no-underline transition-colors duration-200 ${
+                `text-sm tracking-[0.12em] uppercase font-normal no-underline transition-colors duration-200 ${
                   isActive ? 'text-clay' : 'text-charcoal hover:text-clay'
                 }`
               }
@@ -59,7 +59,7 @@ const Navbar = () => {
           >
             <Heart size={18} strokeWidth={1.5} />
             {wishlistCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 bg-clay text-white text-[0.6rem] w-4 h-4 rounded-full flex items-center justify-center font-sans font-medium">
+              <span className="absolute -top-1.5 -right-2 bg-clay text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-sans font-medium">
                 {wishlistCount}
               </span>
             )}
@@ -71,7 +71,7 @@ const Navbar = () => {
           >
             <ShoppingBag size={18} strokeWidth={1.5} />
             {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 bg-clay text-white text-[0.6rem] w-4 h-4 rounded-full flex items-center justify-center font-sans font-medium">
+              <span className="absolute -top-1.5 -right-2 bg-clay text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-sans font-medium">
                 {cartCount}
               </span>
             )}
@@ -80,6 +80,7 @@ const Navbar = () => {
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden text-bark hover:text-clay transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
             aria-label="Meny"
+            aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
           </button>
@@ -95,7 +96,7 @@ const Navbar = () => {
               to={to}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `block px-6 py-4 text-[0.75rem] tracking-[0.12em] uppercase font-normal no-underline border-b border-light-stone transition-colors duration-200 ${
+                `block px-6 py-4 text-sm tracking-[0.12em] uppercase font-normal no-underline border-b border-light-stone transition-colors duration-200 ${
                   isActive ? 'text-clay' : 'text-charcoal hover:text-clay'
                 }`
               }
